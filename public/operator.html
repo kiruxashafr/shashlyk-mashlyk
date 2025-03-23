@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель оператора</title>
+    <link rel="stylesheet" href="/css/operator.css">
+</head>
+<body>
+    <!-- Модальное окно для авторизации -->
+    <div id="auth-modal" class="auth-modal">
+        <div class="auth-modal-content">
+            <h2>Введите пароль</h2>
+            <input type="password" id="auth-password" placeholder="Пароль" required>
+            <button onclick="checkPassword()">Войти</button>
+            <p id="auth-error" class="auth-error"></p>
+        </div>
+    </div>
+
+    <!-- Основное содержимое -->
+    <div class="operator-container" style="display: none;">
+        <h1>Панель оператора</h1>
+        <div class="operator-buttons">
+            <button id="history-button" class="history-button">История заказов</button>
+            <button id="stock-button" class="stock-button">Наличие товаров</button>
+            <button id="manage-button" class="manage-button">Добавить/удалить товар</button>
+            <button id="price-button" class="manage-button">Изменение цены</button> <!-- Новая кнопка -->
+        </div>
+        <h2>Активные заказы</h2>
+        <div id="active-orders" class="active-orders"></div>
+    </div>
+
+    <!-- Модальное окно для управления товарами -->
+    <div class="manage-products-modal">
+        <div class="manage-products-content">
+            <span class="manage-products-close">×</span>
+            <h2>Управление товарами</h2>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="add-product">Добавить товар</button>
+                <button class="tab-btn" data-tab="delete-product">Удалить товар</button>
+            </div>
+            <!-- Вкладка добавления товара -->
+            <div class="tab-content active" id="add-product">
+                <form id="add-product-form">
+                    <label for="name">Название:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="description">Описание:</label>
+                    <textarea id="description" name="description" required></textarea>
+
+                    <label for="price">Цена (₽):</label>
+                    <input type="number" id="price" name="price" step="0.01" required>
+
+                    <label for="image">Изображение:</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <input type="hidden" id="image-path" name="imagePath">
+
+                    <label for="weight">Вес:</label>
+                    <input type="text" id="weight" name="weight" required>
+
+                    <label for="composition">Состав:</label>
+                    <textarea id="composition" name="composition" required></textarea>
+
+                    <label for="calories">Калории:</label>
+                    <input type="number" id="calories" name="calories" required>
+
+                    <label for="protein">Белки (г):</label>
+                    <input type="number" id="protein" name="protein" step="0.1" required>
+
+                    <label for="fat">Жиры (г):</label>
+                    <input type="number" id="fat" name="fat" step="0.1" required>
+
+                    <label for="carbs">Углеводы (г):</label>
+                    <input type="number" id="carbs" name="carbs" step="0.1" required>
+
+                    <label for="category">Категория:</label>
+                    <select id="category" name="category" required>
+                        <option value="shashlyk">Шашлык</option>
+                        <option value="shaurma">Шаурма</option>
+                        <option value="garnir">Гарнир</option>
+                        <option value="bread">Хлеб</option>
+                        <option value="sauces">Соусы</option>
+                        <option value="salads">Салаты</option>
+                        <option value="hinkali">Хинкали</option>
+                        <option value="burgers">Бургеры</option>
+                        <option value="desserts">Десерты</option>
+                    </select>
+
+                    <label for="inStock">В наличии:</label>
+                    <select id="inStock" name="inStock">
+                        <option value="1">Да</option>
+                        <option value="0">Нет</option>
+                    </select>
+
+                    <button type="submit">Добавить товар</button>
+                </form>
+            </div>
+            <!-- Вкладка удаления товара -->
+            <div class="tab-content" id="delete-product">
+                <div id="product-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно подтверждения удаления -->
+    <div class="confirm-delete-modal">
+        <div class="confirm-delete-content">
+            <p>Вы уверены, что хотите удалить данный товар? Его восстановление будет невозможно.</p>
+            <button class="confirm-cancel">Отмена</button>
+            <button class="confirm-delete">Удалить</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно для истории заказов -->
+    <div id="order-history-modal" class="order-history-modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h2>История заказов</h2>
+            <div class="history-tabs">
+                <button class="tab-button active" data-tab="success">Успешные</button>
+                <button class="tab-button" data-tab="canceled">Отменённые</button>
+            </div>
+            <div class="tab-content" id="success-orders" style="display: block;"></div>
+            <div class="tab-content" id="canceled-orders" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для управления наличием -->
+    <div id="stock-modal" class="stock-modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h2>Наличие товаров</h2>
+            <div id="stock-list" class="stock-list"></div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для изменения цены -->
+    <div id="price-modal" class="manage-products-modal">
+        <div class="manage-products-content">
+            <span class="manage-products-close">×</span>
+            <h2>Изменение цены</h2>
+            <div id="price-list" class="stock-list"></div>
+        </div>
+    </div>
+
+    <!-- Модальное окно подтверждения изменения цены -->
+    <div id="confirm-price-modal" class="confirm-delete-modal">
+        <div class="confirm-delete-content">
+            <p id="confirm-price-text">Вы действительно хотите изменить цену товара?</p>
+            <button class="confirm-cancel">Отмена</button>
+            <button class="confirm-price">Подтвердить</button>
+        </div>
+    </div>
+
+    <script src="/js/operator.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91d393c5ddd5b0ac',t:'MTc0MTQ0OTk1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

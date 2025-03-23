@@ -1,0 +1,143 @@
+/* Стили для футера */
+.footer {
+    background-color: #d2d4d6; /* Убрана прозрачность */
+    padding: 15px 0;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-top: 1px solid #ddd;
+    position: relative;
+    z-index: 10; /* Уменьшен до 10, чтобы быть ниже модального окна */
+    border-radius: 15px;
+}
+
+.footer-content {
+    padding: 0 10px; /* Отступы внутри футера, как у шапки */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Центрируем содержимое внутри футера */
+    gap: 40px;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+}
+
+.footer-logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo {
+    height: 40px;
+    width: auto;
+}
+
+.footer-icon-link {
+    display: flex;
+    align-items: center;
+}
+
+.footer-icon {
+    width: 30px; /* Единый размер для всех иконок */
+    height: 30px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.footer-icon:hover {
+    transform: scale(1.1);
+}
+
+.footer-icon1 {
+    width: 30px; /* Унифицируем размер с .footer-icon */
+    height: 30px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.footer-icon1:hover {
+    transform: scale(1.1);
+}
+
+.footer-about-link {
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer-about-link:hover {
+    color: #858a86;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .footer {
+        padding: 15px 0;
+    }
+    .footer-content {
+        padding: 0 15px;
+        gap: 30px;
+    }
+    .footer-icon, .footer-icon1 {
+        width: 30px; /* Сохраняем единый размер */
+        height: 30px;
+    }
+}
+
+@media (max-width: 780px) {
+    .footer {
+        padding: 10px 0;
+    }
+    .footer-content {
+        gap: 25px;
+    }
+    .footer-logo {
+        height: 35px;
+    }
+    .footer-icon, .footer-icon1 {
+        width: 30px; /* Сохраняем единый размер */
+        height: 30px;
+    }
+    .footer-about-link {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) { /* Исправлено с 5px на 576px, предполагаю, это опечатка */
+    .footer-content {
+        gap: 20px;
+        padding: 0 10px;
+    }
+    .footer-logo {
+        height: 30px;
+    }
+    .footer-icon, .footer-icon1 {
+        width: 30px; /* Сохраняем единый размер */
+        height: 30px;
+    }
+    .footer-about-link {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 368px) {
+    .footer {
+        padding: 8px 0;
+    }
+    .footer-content {
+        gap: 15px;
+        padding: 0 5px;
+    }
+    .footer-logo {
+        height: 25px;
+    }
+    .footer-icon, .footer-icon1 {
+        width: 30px; /* Сохраняем единый размер */
+        height: 30px;
+    }
+    .footer-about-link {
+        font-size: 10px;
+    }
+}
