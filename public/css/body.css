@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: #e8e9eb;
+    background: #f0f1f3; /* Было #e8e9eb, теперь чуть светлее */
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -61,9 +61,9 @@ body::after {
 /* Левый контейнер с категориями */
 .category-container {
     width: 250px;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: transparent;
     border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: none;
     padding: 15px;
     flex-shrink: 0;
     display: block;
@@ -79,17 +79,17 @@ body::after {
     align-items: center;
     padding: 10px;
     cursor: pointer;
-    border-radius: 8px;
+    background-color: #ffffff; /* Белый фон для элементов */
+    border-radius: 8px; /* Оставляем закругленные края */
     transition: transform 0.3s ease, background-color 0.3s ease;
+    margin-bottom: 5px;
 }
 
 .category-item:hover {
-    background-color: #eaeaea;
     transform: scale(1.05);
 }
 
 .category-item.active {
-    background-color: #d2d4d6;
     transform: scale(1.03);
 }
 
@@ -115,9 +115,9 @@ body::after {
     width: 100%;
     max-width: 100%;
     margin: 0;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: transparent;
     border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: none;
     padding: 20px;
     flex-grow: 1;
     transition: transform 0.3s ease;
@@ -221,7 +221,7 @@ input:not(:checked) + .slider .label:last-child {
 
 /* Корзина */
 .cart-container {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: #ffffff; /* Оставляем белый фон */
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     padding: 10px;
@@ -231,9 +231,11 @@ input:not(:checked) + .slider .label:last-child {
     flex-direction: column;
     transition: transform 0.3s ease;
     overflow: hidden; /* Предотвращаем выход содержимого за пределы */
+    position: relative;
 }
 .cart-content  {
-    height: 380px;
+    height: auto; /* Позволяем содержимому определять высоту */
+    min-height: calc(400px - 50px); /* Учитываем высоту кнопки */
 }
 .cart-container:hover {
     transform: translateY(-5px);
@@ -259,25 +261,35 @@ input:not(:checked) + .slider .label:last-child {
 
 /* Кнопка "Перейти к оформлению" */
 .checkout-button {
-    display: block;
-    width: 100%;
-    max-width: 200px;
-    padding: 10px;
-    background-color: #858a86;
-    color: #fff;
-    text-align: center;
-    border: none;
-    border-radius: 10px;
-    font-size: 14px;
-    cursor: pointer;
-    margin: 10px auto 0; /* Отступ сверху 10px от списка товаров */
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block; /* Блочный элемент */
+    width: 100%; /* Полная ширина */
+    max-width: 200px; /* Максимальная ширина 200px */
+    padding: 10px; /* Внутренние отступы */
+    background-color: #858a86; /* Основной цвет фона */
+    color: #fff; /* Белый цвет текста */
+    text-align: center; /* Центрированный текст */
+    border: none; /* Без границы */
+    border-radius: 10px; /* Закругленные углы */
+    font-size: 14px; /* Размер шрифта */
+    cursor: pointer; /* Курсор указателя при наведении */
+    position: absolute; /* Абсолютное позиционирование относительно .cart-container */
+    bottom: 10px; /* Отступ от нижнего края контейнера */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Смещение влево на половину ширины для точного центрирования */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Плавные переходы для трансформации и цвета фона */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
 }
 
+/* Состояние при наведении */
 .checkout-button:hover {
-    background-color: #a0a3a5;
-    transform: scale(1.05);
+    background-color: #a0a3a5; /* Более светлый оттенок при наведении */
+    transform: translateX(-50%) scale(1.05); /* Сохраняем центрирование и добавляем небольшое увеличение */
+}
+
+/* Состояние при нажатии (опционально, для лучшего UX) */
+.checkout-button:active {
+    transform: translateX(-50%) scale(0.98); /* Небольшое уменьшение при клике */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Уменьшаем тень при нажатии */
 }
 
 /* Кнопка "Перейти в корзину" для мобильных устройств */
@@ -549,7 +561,6 @@ input:not(:checked) + .slider .label:last-child {
     .category-container { 
         width: 215px; 
         margin-left: 10px; 
-        border: 1px solid #ddd;
         display: block;
         position: fixed;
         top: 85px; /* Учитываем высоту шапки */
