@@ -70,9 +70,7 @@ body::after {
     transition: transform 0.3s ease;
 }
 
-.category-container:hover {
-    transform: translateY(-5px);
-}
+
 
 .category-item {
     display: flex;
@@ -124,9 +122,6 @@ body::after {
     box-sizing: border-box;
 }
 
-.content-container:hover {
-    transform: translateY(-5px);
-}
 
 /* Правая панель (переключатель + корзина) */
 .right-panel {
@@ -237,9 +232,7 @@ input:not(:checked) + .slider .label:last-child {
     height: auto; /* Позволяем содержимому определять высоту */
     min-height: calc(400px - 50px); /* Учитываем высоту кнопки */
 }
-.cart-container:hover {
-    transform: translateY(-5px);
-}
+
 
 .cart-text {
     font-size: 18px;
@@ -568,7 +561,6 @@ input:not(:checked) + .slider .label:last-child {
         overflow-y: auto;
         z-index: 10;
         margin-right: 30px;
-        max-height: 465px;
     }
     .cart-items {
         max-height: calc(400px - 90px); /* Вертикальная прокрутка работает */
