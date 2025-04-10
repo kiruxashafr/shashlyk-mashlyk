@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Условия доставки - Шашлык-Машлык</title>
+
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/delivery.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ab946a98-7129-47cd-8360-f1b1d88f4b21&lang=ru_RU" defer></script>
+</head>
+<body>
+    <header class="top-bar">
+        <div class="container top-bar-content">
+            <div class="logo-container">
+                <a href="index.html" style="text-decoration: none;">
+                    <img src="/фото/sJB4OhCXlhc.png" alt="Логотип" class="logo">
+                    <span class="cafe-title">Шашлык-Машлык</span>
+                </a>
+            </div>
+            <div id="menu-btn-container">
+                <div id="menu-btn">
+                    <input type="checkbox" id="menu-checkbox" />
+                    <label for="menu-checkbox" id="menu-label">
+                        <div id="menu-bar"></div>
+                    </label>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="about.html" class="button top-button">О нас<img src="фото/receipt_long_bill_invoice_icon_196587.png" alt="О нас" class="button-icon"></a>
+                <a href="delivery.html" class="button top-button">Условия доставки<img src="фото/delivery_truck_shipping_package_fast_icon_196609 (1).png" alt="Условия доставки" class="button-icon"></a>
+                <a href="cart.html" class="button top-button">Корзина<img src="фото/bag_shopping_shop_cart_ecommerce_icon_196622.png" alt="Корзина" class="button-icon"></a>
+            </nav>
+            <div class="contact-info">
+                <div class="phone">
+                    <img src="/фото/Ic_phone_iphone_48px.svg.png" alt="Телефон" class="phone-icon">
+                    <span>+7(958)655-94-00</span>
+                </div>
+                <div class="address"><span class="city">г. Орел, </span>ул. Карачевская д.58</div>
+                <div class="mobaddress">ул. Карачевская д.58</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="delivery-container">
+        <section class="hero-section">
+            <img src="/фото/cafe-hero.jpg" alt="Доставка Шашлык-Машлык" class="hero-image">
+            <div class="hero-overlay"></div>
+            <h1>Доставка вкусного настроения</h1>
+        </section>
+
+        <section class="info-section">
+            <div class="schedule-block">
+                <h2>График доставки</h2>
+                <div class="schedule-content">
+                    <p><img src="фото/clock-icon.png" alt="Часы" class="schedule-icon"> Вс–Чт: 11:00 – 22:00</p>
+                    <p><img src="фото/clock-icon.png" alt="Часы" class="schedule-icon"> Пт–Сб: 11:00 – 23:00</p>
+                </div>
+            </div>
+            <div class="conditions-block">
+                <h2>Условия доставки</h2>
+                <p>Мы привезём ваш заказ прямо к двери, ,бесплатная доставка от 1500 рублей, примрное время
+                     от заказа до еды на вшем столе 50-70 минут! <br>В нашем кафе готовят только из свежих продуктов 
+                     непосредственно после вашего заказа, никаких полуфабрикатов! <br>Наслаждайтесь вкусом без лишних хлопот!</p>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <h2>Взгляните на наше заведение</h2>
+            <div class="gallery">
+                <img src="/фото/cafe-interior1.jpg" alt="Интерьер 1">
+                <img src="/фото/cafe-interior2.jpg" alt="Интерьер 2">
+                <img src="/фото/cafe-exterior.jpg" alt="Экстерьер">
+
+            </div>
+        </section>
+
+        <section class="map-section">
+            <h2>Где нас найти</h2>
+            <div id="map" style="width: 100%; height: 400px;"></div>
+        </section>
+
+        <button class="contact-button">Связаться с нами</button>
+    </main>
+
+            <!-- Модальное окно контактов -->
+            <div class="contact-modal">
+                <div class="contact-modal-content">
+                    <span class="contact-modal-close">×</span>
+                    <h2>Связаться с нами</h2>
+                    <div class="contact-links">
+                        <a href="tel:+7(958)655-94-00" class="contact-link">
+                            <img src="/фото/phone_icon.png" alt="Телефон"> +7(958)655-94-00
+                        </a>
+                        <a href="mailto:shafranovcyril@yandex.ru" class="contact-link">
+                            <img src="/фото/mail_icon.png" alt="Email"> shafranovcyril@yandex.ru
+                        </a>
+                        <a href="https://vk.com/shashlikmashlik57" target="_blank" class="contact-link">
+                            <img src="/фото/vk_icon.png" alt="ВКонтакте"> мы ВКонтакте
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="index.html" class="footer-logo-link">
+                <img src="/фото/sJB4OhCXlhc.png" alt="Логотип" class="footer-logo">
+            </a>
+            <a href="mailto:shafranovcyril@yandex.ru" class="footer-icon-link">
+                <img src="/фото/mail_icon.png" alt="Email" class="footer-icon1">
+            </a>
+            <a href="https://vk.com/shashlikmashlik57" target="_blank" class="footer-icon-link">
+                <img src="/фото/vk_icon.png" alt="ВКонтакте" class="footer-icon">
+            </a>
+            <a href="tel:+7(958)655-94-00" class="footer-icon-link">
+                <img src="/фото/phone_icon.png" alt="Телефон" class="footer-icon">
+            </a>
+            <a href="about.html" class="footer-about-link">О нас</a>
+        </div>
+    </footer>
+
+
+    <script src="js/delivery.js"></script>
+</body>
+</html>
