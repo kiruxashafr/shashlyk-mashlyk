@@ -1,4 +1,31 @@
+# Зависимости Node.js
 node_modules/
-text/
+npm-debug.log
+package-lock.json
+
+# Базы данных
 database.sqlite
-public/фото/
+database-local.sqlite
+*.sqlite
+*.db
+
+# Временные файлы и кэши
+.DS_Store
+*.log
+.npm/
+.node_repl_history
+*.cache
+
+# Локальные конфигурации
+.env
+.vscode/
+.idea/
+
+# Другие временные папки
+text/
+uploads/
+temp/
+
+# Скомпилированные файлы
+dist/
+build/
