@@ -462,7 +462,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     updateDeliveryFields();
 
-    // Функция для загрузки товаров
     function loadProducts() {
         fetch('/api/products')
             .then(response => {
@@ -483,8 +482,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         categories[product.category].push(product);
                     });
     
+                    // Обновленный порядок категорий
                     const categoryOrder = [
-                        'shashlyk', 'shaurma', 'garnir', 'bread', 'sauces', 'salads', 'hinkali', 'burgers', 'desserts'
+                        'shashlyk', 'shaurma', 'garnir', 'bread', 'sauces', 'salads', 'combo', 'pizza', 'drinks'
                     ];
     
                     categoryOrder.forEach(categoryId => {
@@ -542,19 +542,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('Не удалось загрузить товары. Пожалуйста, попробуйте позже.');
             });
     }
-
+    
     function getCategoryName(categoryId) {
         const categoryNames = {
             'shashlyk': 'Шашлык',
             'shaurma': 'Шаурма',
-            'manty': 'Манты',
             'garnir': 'Гарнир',
             'bread': 'Хлеб',
             'sauces': 'Соусы',
             'salads': 'Салаты',
-            'hinkali': 'Хинкали',
-            'burgers': 'Бургеры',
-            'desserts': 'Десерты'
+            'combo': 'Комбо',
+            'pizza': 'Пицца',
+            'drinks': 'Напитки'
         };
         return categoryNames[categoryId] || categoryId;
     }
@@ -916,7 +915,7 @@ document.addEventListener('DOMContentLoaded', function () {
     handleHeaderScroll();
 
     loadProducts();
-    
+
     // Устанавливаем начальное состояние прокрутки
     if (window.innerWidth <= 1200) {
         body.style.overflow = 'auto'; // Разрешаем прокрутку на мобильных по умолчанию
