@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: #f0f1f3; /* Было #e8e9eb, теперь чуть светлее */
+    background: #f0f1f3;
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -35,17 +35,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin: 0 auto;
-    max-width: 100%;
-    padding: 0 10px;
-    padding-top: 90px; /* Базовый отступ для шапки */
+    width: 100%; /* Полная ширина */
+    max-width: none; /* Убираем ограничение ширины */
+    margin: 0;
+    padding: 0 10px; /* Небольшие отступы по бокам */
     flex-grow: 1;
-    animation: fadeIn 0.5s ease-in;
     position: relative;
     z-index: 1;
     box-sizing: border-box;
 }
-/* Анимация появления контейнера */
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -70,15 +69,13 @@ body::after {
     transition: transform 0.3s ease;
 }
 
-
-
 .category-item {
     display: flex;
     align-items: center;
     padding: 10px;
     cursor: pointer;
-    background-color: #ffffff; /* Белый фон для элементов */
-    border-radius: 8px; /* Оставляем закругленные края */
+    background-color: #ffffff;
+    border-radius: 8px;
     transition: transform 0.3s ease, background-color 0.3s ease;
     margin-bottom: 5px;
 }
@@ -121,7 +118,6 @@ body::after {
     transition: transform 0.3s ease;
     box-sizing: border-box;
 }
-
 
 /* Правая панель (переключатель + корзина) */
 .right-panel {
@@ -216,23 +212,23 @@ input:not(:checked) + .slider .label:last-child {
 
 /* Корзина */
 .cart-container {
-    background-color: #ffffff; /* Оставляем белый фон */
+    background-color: #ffffff;
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     padding: 10px;
     height: 400px;
-    max-height: 400px; /* Максимальная высота 300px */
+    max-height: 400px;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
-    overflow: hidden; /* Предотвращаем выход содержимого за пределы */
+    overflow: hidden;
     position: relative;
 }
-.cart-content  {
-    height: auto; /* Позволяем содержимому определять высоту */
-    min-height: calc(400px - 50px); /* Учитываем высоту кнопки */
-}
 
+.cart-content {
+    height: auto;
+    min-height: calc(400px - 50px);
+}
 
 .cart-text {
     font-size: 18px;
@@ -247,47 +243,45 @@ input:not(:checked) + .slider .label:last-child {
     text-align: center;
     display: block;
     width: 100%;
-    max-height: calc(400px - 90px); /* Вычитаем высоту заголовка, кнопки и отступов */
-    overflow-y: auto; /* Прокрутка внутри списка товаров */
-    flex-grow: 1; /* Растягиваем, чтобы занять доступное пространство */
+    max-height: calc(400px - 90px);
+    overflow-y: auto;
+    flex-grow: 1;
 }
 
 /* Кнопка "Перейти к оформлению" */
 .checkout-button {
-    display: block; /* Блочный элемент */
-    width: 100%; /* Полная ширина */
-    max-width: 200px; /* Максимальная ширина 200px */
-    padding: 10px; /* Внутренние отступы */
-    background-color: #858a86; /* Основной цвет фона */
-    color: #fff; /* Белый цвет текста */
-    text-align: center; /* Центрированный текст */
-    border: none; /* Без границы */
-    border-radius: 10px; /* Закругленные углы */
-    font-size: 14px; /* Размер шрифта */
-    cursor: pointer; /* Курсор указателя при наведении */
-    position: absolute; /* Абсолютное позиционирование относительно .cart-container */
-    bottom: 10px; /* Отступ от нижнего края контейнера */
-    left: 50%; /* Центрирование по горизонтали */
-    transform: translateX(-50%); /* Смещение влево на половину ширины для точного центрирования */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Плавные переходы для трансформации и цвета фона */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    padding: 10px;
+    background-color: #858a86;
+    color: #fff;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Состояние при наведении */
 .checkout-button:hover {
-    background-color: #a0a3a5; /* Более светлый оттенок при наведении */
-    transform: translateX(-50%) scale(1.05); /* Сохраняем центрирование и добавляем небольшое увеличение */
+    background-color: #a0a3a5;
+    transform: translateX(-50%) scale(1.05);
 }
 
-/* Состояние при нажатии (опционально, для лучшего UX) */
 .checkout-button:active {
-    transform: translateX(-50%) scale(0.98); /* Небольшое уменьшение при клике */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Уменьшаем тень при нажатии */
+    transform: translateX(-50%) scale(0.98);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Кнопка "Перейти в корзину" для мобильных устройств */
 .mobile-cart-button {
-    display: none; /* По умолчанию скрыта, включается в нужных медиа */
+    display: none;
     position: fixed;
     bottom: 10px;
     left: 10px;
@@ -300,7 +294,7 @@ input:not(:checked) + .slider .label:last-child {
     border-radius: 10px;
     font-size: 14px;
     cursor: pointer;
-    z-index: 100; /* Увеличиваем z-index, чтобы быть выше футера */
+    z-index: 100;
     transition: transform 0.3s ease, background-color 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -386,21 +380,29 @@ input:not(:checked) + .slider .label:last-child {
     .main-container {
         flex-direction: column;
         align-items: center;
-        padding-top: 0;
+        padding: 0 10px; /* Небольшие отступы */
+        margin-top: 160px; /* Учитываем top-bar (60px) + mobile-categories (50px) + mobile-toggle (50px) */
+        width: 100%; /* Полная ширина */
     }
     .category-container, .content-container, .right-panel {
         width: 100%;
         margin: 0;
-        position: static; /* Сбрасываем фиксированное положение */
+        position: static;
     }
     .content-container {
-        overflow-y: visible; /* Отключаем прокрутку внутри контейнера */
-        height: auto; /* Высота по содержимому */
+        overflow-y: visible;
+        height: auto;
+        margin-top: 0; /* Без лишних отступов */
     }
     .toggle-container { display: none; }
     .mobile-toggle-container {
         width: 100%;
-        margin: 90px 0 15px 0; /* 90px сверху, чтобы не перекрываться top-bar, 15px снизу */
+        position: fixed;
+        top: 110px; /* Под top-bar (60px) + mobile-categories (50px) */
+        z-index: 100;
+        margin: 0;
+        padding: 10px 0;
+        background-color: #f0f1f3;
         display: flex;
         justify-content: center;
     }
@@ -412,129 +414,200 @@ input:not(:checked) + .slider .label:last-child {
         display: flex;
         flex-wrap: nowrap;
         overflow-x: auto;
-        gap: 10px;
-        margin: 0 0 15px 0; /* 15px снизу до контента */
-        padding: 10px;
-        background-color: rgba(255, 255, 255, 0.95);
-        border-radius: 15px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-        width: 95%;
+        gap: 15px;
+        margin: 0;
+        padding: 8px 10px;
+        background-color: #ffffff;
+        border-radius: 0;
+        box-shadow: none;
+        z-index: 99;
+        width: 100%;
         white-space: nowrap;
-        position: sticky;
-        top: 80px; /* Начальная позиция ниже top-bar */
-        transition: top 0.5s ease; /* Плавный переход для изменения top */
+        position: fixed;
+        top: 60px; /* Точно под top-bar высотой 60px */
+        left: 0;
+        transition: top 0.5s ease;
     }
     .mobile-categories.fixed {
-        top: 10px; /* Фиксируется вверху, когда top-bar скрыт */
+        top: 0; /* Когда top-bar скрыт */
     }
     .mobile-categories .category-item {
-        padding: 8px 14px;
-        background-color: #e8e9eb;
-        border-radius: 10px;
-        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        padding: 8px 12px;
+        background-color: transparent;
+        border-radius: 0;
+        transition: color 0.3s ease;
         flex-shrink: 0;
+        position: relative;
     }
     .mobile-categories .category-item:hover {
-        transform: scale(1.1);
-        background-color: #eaeaea;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        color: #858a86;
     }
     .mobile-categories .category-item.active {
-        background-color: #d2d4d6;
-        transform: scale(1.05);
+        color: #333;
+        background-color: transparent;
     }
-    .content-container {
-        margin-top: 5px !important; /* 15px от категорий */
+    .mobile-categories .category-item.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: #858a86;
+        animation: expandLine 0.3s ease forwards;
+        transform: translateX(-50%);
+    }
+    @keyframes expandLine {
+        0% { width: 0; }
+        100% { width: 100%; }
+    }
+    .mobile-categories .category-name {
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+    }
+    .mobile-categories .category-icon {
+        display: none;
     }
     .top-bar {
         position: fixed;
         top: 0;
-        transition: transform 0.5s ease; /* Плавное скрытие/появление */
+        transition: transform 0.5s ease;
     }
     .top-bar.hidden {
-        transform: translateY(-100%); /* Скрываем header вверх при прокрутке вниз */
+        transform: translateY(-100%);
     }
-    .mobaddress { display: none; } /* Скрываем мобильный адрес */
-    .address { display: block; } /* Показываем полный адрес */
+    .mobaddress { display: none; }
+    .address { display: block; }
     body.menu-open .main-container {
         padding-top: 0;
     }
-    body.menu-open .mobile-toggle-container {
-        margin-top: 120px; /* Учитываем высоту открытого меню */
-    }
     .footer {
-        position: relative; /* Обычное положение после контента */
-        z-index: 10; /* Оставляем ниже кнопки mobile-cart-button */
-        margin-top: 20px; /* Отступ сверху от товаров */
+        position: relative;
+        z-index: 10;
+        margin-top: 20px;
+        width: 100%;
+        padding: 0 10px;
     }
 }
 
 @media (max-width: 780px) {
     .category-container { display: none; }
     .content-container { 
-        margin: 15px 0 0 0;
+        margin-top: 0;
     }
     .right-panel { display: none; }
     .mobile-toggle-container { 
         display: flex;
-        margin: 90px 0 15px 0; /* 90px сверху, чтобы не перекрываться top-bar */
+        top: 110px;
     }
     .mobile-cart-button { 
         display: block; 
-        z-index: 100; /* Выше футера */
+        z-index: 100;
     }
     body { padding-bottom: 70px; }
     .footer {
-        margin-top: 20px; /* Отступ от товаров */
+        margin-top: 20px;
     }
-    .address { display: none; } /* Скрываем полный адрес */
-    .mobaddress { display: inline-block; } /* Показываем мобильный адрес */
+    .address { display: none; }
+    .mobaddress { display: inline-block; }
 }
 
 @media (min-width: 780px) and (max-width: 1200px) {
     .category-container {
-        display: none; /* Убираем обычные категории */
+        display: none;
     }
     .mobile-toggle-container {
-        margin: 90px 0 15px 0; /* 90px сверху, чтобы не перекрываться top-bar */
+        top: 110px;
     }
     .mobile-cart-button { 
-        display: block; /* Включаем кнопку "Перейти в корзину" */
-        z-index: 100; /* Выше футера */
+        display: block;
+        z-index: 100;
     }
     .content-container {
-        margin: 15px 0 0 0; /* Учитываем кнопку корзины снизу */
+        margin-top: 0;
     }
     .right-panel { 
-        display: none; /* Скрываем правую панель */
+        display: none;
     }
     body { 
-        padding-bottom: 60px; /* Учитываем кнопку корзины */
+        padding-bottom: 60px;
     }
-    body.menu-open .mobile-toggle-container {
-        margin-top: 120px; /* Учитываем высоту открытого меню */
+    .address { display: block; }
+    .mobaddress { display: none; }
+}
+
+@media (max-width: 576px) {
+    .main-container {
+        margin-top: 165px; /* Учитываем top-bar (65px) + mobile-categories (50px) + toggle (50px) */
+        padding: 0 10px;
     }
-    .footer {
-        margin-top: 20px; /* Отступ от товаров */
+    .mobile-toggle-container {
+        top: 115px; /* Под top-bar (65px) + mobile-categories (50px) */
     }
-    .address { display: block; } /* Показываем полный адрес */
-    .mobaddress { display: none; } /* Скрываем мобильный адрес */
+    .mobile-categories {
+        top: 65px; /* Точно под top-bar высотой 65px */
+    }
+    .mobile-categories.fixed {
+        top: 0;
+    }
+    .content-container {
+        margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container { 
+        padding: 0 5px; /* Уменьшаем отступы для маленьких экранов */
+        margin-top: 170px; /* Учитываем top-bar (70px) + mobile-categories (50px) + toggle (50px) */
+    }
+    .content-container { 
+        padding: 10px; 
+        margin-top: 0 !important;
+    }
+    .mobile-toggle-container { 
+        top: 120px; /* Под top-bar (70px) + mobile-categories (50px) */
+    }
+    .mobile-categories {
+        top: 70px; /* Точно под top-bar высотой 70px */
+    }
+    .mobile-categories.fixed {
+        top: 0;
+    }
+    .category-icon { width: 20px; height: 20px; }
+    .category-name { font-size: 12px; }
+    .mobile-cart-button { font-size: 14px; padding: 10px 15px; }
+    .address { display: none; }
+    .mobaddress { font-size: 12px; display: inline-block; white-space: nowrap; }
 }
 
 @media (max-width: 368px) {
-    .main-container { padding: 0 5px; }
-    .container { padding: 10px; }
-    .mobile-toggle-container .toggle { max-width: 250px; }
-    .mobile-toggle-container { margin-top: 80px !important; }
+    .main-container { 
+        padding: 0 5px;
+        margin-top: 155px; /* Учитываем top-bar (~65px) + mobile-categories (50px) + toggle (40px) */
+    }
+    .mobile-toggle-container { 
+        top: 115px; /* Под top-bar (~65px) + mobile-categories (50px) */
+    }
+    .mobile-categories {
+        top: 65px; /* Точно под top-bar высотой ~65px */
+    }
+    .mobile-categories.fixed {
+        top: 0;
+    }
+    .content-container {
+        margin-top: 0 !important;
+    }
+    .mobile-toggle-container .toggle { 
+        max-width: 250px; 
+        height: 40px; 
+    }
     .label { font-size: 14px; line-height: 40px; }
-    .toggle { height: 40px; }
-    .content-container { margin-top: 0px !important; }
 }
 
 @media (min-width: 780px) {
-    .mobile-categories { display: flex; } /* Показываем мобильные категории для 780-1200 */
-    .category-container { display: none; } /* Скрываем обычные категории для 780-1200 */
+    .mobile-categories { display: flex; }
+    .category-container { display: none; }
     .mobile-cart-modal { display: none; }
 }
 
@@ -542,99 +615,94 @@ input:not(:checked) + .slider .label:last-child {
     .main-container {
         display: flex;
         justify-content: space-between;
-        max-width: 100%;
-        padding-top: 92px; /* Синхронизировано с высотой top-bar */
-        height: calc(100vh  - 65px); /* Высота = окно - шапка - футер */
-        position: fixed; /* Фиксируем главный контейнер */
+        width: 100%; /* Полная ширина */
+        padding: 0 10px; /* Небольшие отступы */
+        padding-top: 92px;
+        height: calc(100vh - 65px);
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        overflow: hidden; /* Убираем скролл внутри main-container */
+        overflow: hidden;
     }
     .category-container { 
         width: 215px; 
         margin-left: 10px; 
         display: block;
         position: fixed;
-        top: 85px; /* Учитываем высоту шапки */
-        bottom: 60px; /* Учитываем футер */
+        top: 85px;
+        bottom: 60px;
         overflow-y: auto;
         z-index: 10;
         margin-right: 30px;
     }
     .cart-items {
-        max-height: calc(400px - 90px); /* Вертикальная прокрутка работает */
-        overflow-y: auto; /* Включаем вертикальную прокрутку */
-        overflow-x: hidden; /* Убираем горизонтальную прокрутку на уровне контейнера */
-        display: flex; /* Flex для выравнивания */
-        flex-direction: column; /* Элементы вертикально */
-        width: 100%; /* Полная ширина контейнера */
-        padding: 0; /* Убираем лишние отступы */
+        max-height: calc(400px - 90px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
     }
-
     .cart-item {
-        width: 100%; /* Растягиваем по ширине */
-        box-sizing: border-box; /* Учитываем padding и border */
-        display: flex; /* Внутренняя структура как в korzina.css */
-        align-items: center; /* Выравнивание по центру как в korzina.css */
-        justify-content: space-between; /* Равномерное распределение */
-        padding: 10px; /* Как в korzina.css */
-        border-bottom: 1px solid #ddd; /* Как в korzina.css */
-        min-height: 60px; /* Минимальная высота как у изображения в korzina.css */
-        /* Убрано overflow-x: hidden, чтобы не было прокрутки внутри элемента */
-        white-space: nowrap; /* Предотвращаем перенос текста */
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        min-height: 60px;
+        white-space: nowrap;
     }
-
     .cart-item:last-child {
-        border-bottom: none; /* Как в korzina.css */
+        border-bottom: none;
     }
-
-    /* Дополнительно ограничиваем содержимое внутри .cart-item */
     .cart-item-info {
         flex-grow: 1;
-        overflow: hidden; /* Обрезаем переполнение без прокрутки */
-        text-overflow: ellipsis; /* Добавляем многоточие для длинного текста */
-        white-space: nowrap; /* Убеждаемся, что текст не переносится */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .content-container { 
         max-width: 100%; 
-        margin: 0 270px; /* Учитываем ширину левого и правого контейнеров */
-        overflow-y: auto; /* Только этот контейнер прокручивается */
-        height: calc(100vh - 80px - 60px); /* Высота = окно - шапка - футер */
+        margin: 0 270px;
+        overflow-y: auto;
+        height: calc(100vh - 80px - 60px);
         position: static;
         box-sizing: border-box;
         border-radius: 15px;
     }
-
-
     .right-panel { 
         width: 260px; 
         margin-right: 10px; 
         display: flex; 
         position: fixed;
         right: 0;
-        top: 85px; /* Учитываем высоту шапки */
-        bottom: 60px; /* Учитываем футер */
+        top: 85px;
+        bottom: 60px;
         overflow-y: auto;
         z-index: 10;
     }
     .footer {
-        position: fixed !important; /* Фиксируем футер внизу */
+        position: fixed !important;
         bottom: 0;
         left: 0;
         right: 0;
-        height: 60px; /* Задаём фиксированную высоту футера */
-        margin-top: 0; /* Убираем auto, так как он фиксирован */
-        z-index: 5; /* Ниже top-bar (z-index: 100) */
+        height: 60px;
+        margin-top: 0;
+        z-index: 5;
         background: #fff;
         box-sizing: border-box;
+        padding: 0 10px;
     }
     .mobile-toggle-container { display: none !important; }
     .mobile-categories { display: none !important; }
-    .top-bar.hidden { transform: none; } /* Отключаем скрытие для >1200px */
+    .top-bar.hidden { transform: none; }
     .mobile-cart-button { display: none; }
-    .mobaddress { display: none; } /* Скрываем мобильный адрес */
-    .address { display: block; } /* Показываем полный адрес */
+    .mobaddress { display: none; }
+    .address { display: block; }
 }
 
 .mobile-toggle-container {
@@ -655,29 +723,6 @@ body.menu-open .main-container {
 
 @media (max-width: 780px) {
     body.menu-open .main-container {
-        margin-top: 0;
-    }
-}
-
-@media (max-width: 576px) {
-    .mobile-toggle-container {
-        margin-top: 75px;
-    }
-    .mobile-categories {
-        top: 70px;
-    }
-}
-
-@media (max-width: 480px) {
-    .main-container { padding: 0 5px; }
-    .content-container { padding: 10px; }
-    .category-icon { width: 20px; height: 20px; }
-    .category-name { font-size: 12px; }
-    .mobile-cart-button { font-size: 14px; padding: 10px 15px; }
-    .mobile-toggle-container { margin: 75px 0 15px 0; }
-    .address { display: none; }
-    .mobaddress { font-size: 12px; display: inline-block; white-space: nowrap; }
-    .mobile-categories {
-        top: 65px;
+        margin-top: 160px; /* Учитываем высоту фиксированных элементов */
     }
 }

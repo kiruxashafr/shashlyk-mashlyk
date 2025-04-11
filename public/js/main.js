@@ -462,7 +462,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     updateDeliveryFields();
 
-    // Функция для загрузки товаров
     function loadProducts() {
         fetch('/api/products')
             .then(response => {
@@ -483,8 +482,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         categories[product.category].push(product);
                     });
     
+                    // Обновленный порядок категорий
                     const categoryOrder = [
-                        'shashlyk', 'shaurma', 'garnir', 'bread', 'sauces', 'salads', 'hinkali', 'burgers', 'desserts'
+                        'shashlyk', 'shaurma', 'garnir', 'bread', 'sauces', 'salads', 'combo', 'pizza', 'drinks'
                     ];
     
                     categoryOrder.forEach(categoryId => {
@@ -542,19 +542,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('Не удалось загрузить товары. Пожалуйста, попробуйте позже.');
             });
     }
-
+    
     function getCategoryName(categoryId) {
         const categoryNames = {
             'shashlyk': 'Шашлык',
             'shaurma': 'Шаурма',
-            'manty': 'Манты',
             'garnir': 'Гарнир',
             'bread': 'Хлеб',
             'sauces': 'Соусы',
             'salads': 'Салаты',
-            'hinkali': 'Хинкали',
-            'burgers': 'Бургеры',
-            'desserts': 'Десерты'
+            'combo': 'Комбо',
+            'pizza': 'Пицца',
+            'drinks': 'Напитки'
         };
         return categoryNames[categoryId] || categoryId;
     }
@@ -792,11 +791,13 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCart();
     updateMobileCart();
 
+    // Обработка кликов по категориям с анимацией линии
     document.querySelectorAll('.category-item').forEach(category => {
         category.addEventListener('click', function () {
             const categoryId = this.getAttribute('data-category');
             const categorySection = document.getElementById(`category-${categoryId}`);
 
+            // Существующая логика прокрутки
             if (categorySection) {
                 if (window.innerWidth >= 1201) {
                     const contentContainer = document.querySelector('.content-container');
@@ -810,11 +811,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
+            // Удаляем активный класс и линию у всех категорий
             document.querySelectorAll('.category-item').forEach(item => {
                 item.classList.remove('active');
+                const underline = item.querySelector('.category-underline');
+                if (underline) {
+                    underline.style.transform = 'scaleX(0)';
+                }
             });
 
+            // Добавляем активный класс и анимируем линию для выбранной категории
             this.classList.add('active');
+            const underline = this.querySelector('.category-underline');
+            if (underline) {
+                underline.style.transform = 'scaleX(1)';
+            }
         });
     });
 
