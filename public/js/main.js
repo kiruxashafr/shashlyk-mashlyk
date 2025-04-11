@@ -792,11 +792,13 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCart();
     updateMobileCart();
 
+    // Обработка кликов по категориям с анимацией линии
     document.querySelectorAll('.category-item').forEach(category => {
         category.addEventListener('click', function () {
             const categoryId = this.getAttribute('data-category');
             const categorySection = document.getElementById(`category-${categoryId}`);
 
+            // Существующая логика прокрутки
             if (categorySection) {
                 if (window.innerWidth >= 1201) {
                     const contentContainer = document.querySelector('.content-container');
@@ -810,11 +812,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
+            // Удаляем активный класс и линию у всех категорий
             document.querySelectorAll('.category-item').forEach(item => {
                 item.classList.remove('active');
+                const underline = item.querySelector('.category-underline');
+                if (underline) {
+                    underline.style.transform = 'scaleX(0)';
+                }
             });
 
+            // Добавляем активный класс и анимируем линию для выбранной категории
             this.classList.add('active');
+            const underline = this.querySelector('.category-underline');
+            if (underline) {
+                underline.style.transform = 'scaleX(1)';
+            }
         });
     });
 
@@ -904,7 +916,7 @@ document.addEventListener('DOMContentLoaded', function () {
     handleHeaderScroll();
 
     loadProducts();
-
+    
     // Устанавливаем начальное состояние прокрутки
     if (window.innerWidth <= 1200) {
         body.style.overflow = 'auto'; // Разрешаем прокрутку на мобильных по умолчанию

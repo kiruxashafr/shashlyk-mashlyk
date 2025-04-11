@@ -42,136 +42,102 @@
         </div>
     </header>
 
-    <div class="main-container">
-        <div class="mobile-toggle-container">
-            <label class="toggle">
-                <input type="checkbox" id="toggle-switch">
-                <span class="slider">
-                    <span class="label">Самовывоз</span>
-                    <span class="label">Доставка</span>
-                </span>
-            </label>
-        </div>
+ <!-- Выносим мобильные элементы из main-container -->
+<div class="mobile-categories">
+    <div class="category-item" data-category="shashlyk">
+        <span class="category-name">Шашлык</span>
+        <span class="category-underline"></span>
+    </div>
+    <div class="category-item" data-category="shaurma">
+        <span class="category-name">Шаурма</span>
+        <span class="category-underline"></span>
+    </div>
+    <div class="category-item" data-category="garnir">
+        <span class="category-name">Гарнир</span>
+        <span class="category-underline"></span>
+    </div>
+    <div class="category-item" data-category="bread">
+        <span class="category-name">Хлеб</span>
+        <span class="category-underline"></span>
+    </div>
+    <div class="category-item" data-category="sauces">
+        <span class="category-name">Соусы</span>
+        <span class="category-underline"></span>
+    </div>
+    <div class="category-item" data-category="salads">
+        <span class="category-name">Салаты</span>
+        <span class="category-underline"></span>
+    </div>
+    <div class="category-item" data-category="combo">
+        <span class="category-name">Комбо</span>
+        <span class="category-underline"></span>
+    </div>
+    <div class="category-item" data-category="pizza">
+        <span class="category-name">Пицца</span>
+        <span class="category-underline"></span>
+    </div>
+    <div class="category-item" data-category="drinks">
+        <span class="category-name">Напитки</span>
+        <span class="category-underline"></span>
+    </div>
+</div>
 
-        <!-- Для десктопа -->
-        <div class="category-container">
-            <div class="category-item" data-category="shashlyk">
-                <img src="/фото/фото категорий/шашлык кат.png" alt="Шашлык" class="category-icon">
-                <span class="category-name">Шашлык</span>
-            </div>
-            <div class="category-item" data-category="shaurma">
-                <img src="/фото/фото категорий/шаурма кат.png" alt="Шаурма" class="category-icon">
-                <span class="category-name">Шаурма</span>
-            </div>
-            <div class="category-item" data-category="garnir">
-                <img src="/фото/фото категорий/гарнир кат.png" alt="Гарнир" class="category-icon">
-                <span class="category-name">Гарнир</span>
-            </div>
-            <div class="category-item" data-category="bread">
-                <img src="/фото/фото категорий/хлеб кат.png" alt="Хлеб" class="category-icon">
-                <span class="category-name">Хлеб</span>
-            </div>
-            <div class="category-item" data-category="sauces">
-                <img src="/фото/фото категорий/соус кат.png" alt="Соусы" class="category-icon">
-                <span class="category-name">Соусы</span>
-            </div>
-            <div class="category-item" data-category="salads">
-                <img src="/фото/фото категорий/салат кат.png" alt="Салаты" class="category-icon">
-                <span class="category-name">Салаты</span>
-            </div>
-            <div class="category-item" data-category="hinkali">
-                <img src="/фото/фото категорий/хинкали кат.png" alt="Хинкали" class="category-icon">
-                <span class="category-name">Хинкали</span>
-            </div>
-            <div class="category-item" data-category="burgers">
-                <img src="/фото/фото категорий/бургеры кат.png" alt="Бургеры" class="category-icon">
-                <span class="category-name">Бургеры</span>
-            </div>
-            <div class="category-item" data-category="desserts">
-                <img src="/фото/фото категорий/десерты кат.png" alt="Десерты" class="category-icon">
-                <span class="category-name">Десерты</span>
-            </div>
-        </div>
+<div class="mobile-toggle-container">
+    <label class="toggle">
+        <input type="checkbox" id="toggle-switch">
+        <span class="slider">
+            <span class="label">Самовывоз</span>
+            <span class="label">Доставка</span>
+        </span>
+    </label>
+</div>
 
-        <!-- Для мобильных устройств -->
-        <div class="mobile-categories">
-            <div class="category-item" data-category="shashlyk">
-                <img src="/фото/фото категорий/шашлык кат.png" alt="Шашлык" class="category-icon">
-                <span class="category-name">Шашлык</span>
-            </div>
-            <div class="category-item" data-category="shaurma">
-                <img src="/фото/фото категорий/шаурма кат.png" alt="Шаурма" class="category-icon">
-                <span class="category-name">Шаурма</span>
-            </div>
-            <div class="category-item" data-category="garnir">
-                <img src="/фото/фото категорий/гарнир кат.png" alt="Гарнир" class="category-icon">
-                <span class="category-name">Гарнир</span>
-            </div>
-            <div class="category-item" data-category="bread">
-                <img src="/фото/фото категорий/хлеб кат.png" alt="Хлеб" class="category-icon">
-                <span class="category-name">Хлеб</span>
-            </div>
-            <div class="category-item" data-category="sauces">
-                <img src="/фото/фото категорий/соус кат.png" alt="Соусы" class="category-icon">
-                <span class="category-name">Соусы</span>
-            </div>
-            <div class="category-item" data-category="salads">
-                <img src="/фото/фото категорий/салат кат.png" alt="Салаты" class="category-icon">
-                <span class="category-name">Салаты</span>
-            </div>
-            <div class="category-item" data-category="hinkali">
-                <img src="/фото/фото категорий/хинкали кат.png" alt="Хинкали" class="category-icon">
-                <span class="category-name">Хинкали</span>
-            </div>
-            <div class="category-item" data-category="burgers">
-                <img src="/фото/фото категорий/бургеры кат.png" alt="Бургеры" class="category-icon">
-                <span class="category-name">Бургеры</span>
-            </div>
-            <div class="category-item" data-category="desserts">
-                <img src="/фото/фото категорий/десерты кат.png" alt="Десерты" class="category-icon">
-                <span class="category-name">Десерты</span>
-            </div>
+<!-- Main-container содержит только контент -->
+<div class="main-container">
+    <!-- Для десктопа -->
+    <div class="category-container">
+        <div class="category-item" data-category="shashlyk">
+            <img src="/фото/фото категорий/шашлык кат.png" alt="Шашлык" class="category-icon">
+            <span class="category-name">Шашлык</span>
         </div>
+        <div class="category-item" data-category="shaurma">
+            <img src="/фото/фото категорий/шаурма кат.png" alt="Шаурма" class="category-icon">
+            <span class="category-name">Шаурма</span>
+        </div>
+        <div class="category-item" data-category="garnir">
+            <img src="/фото/фото категорий/гарнир кат.png" alt="Гарнир" class="category-icon">
+            <span class="category-name">Гарнир</span>
+        </div>
+        <div class="category-item" data-category="bread">
+            <img src="/фото/фото категорий/хлеб кат.png" alt="Хлеб" class="category-icon">
+            <span class="category-name">Хлеб</span>
+        </div>
+        <div class="category-item" data-category="sauces">
+            <img src="/фото/фото категорий/соус кат.png" alt="Соусы" class="category-icon">
+            <span class="category-name">Соусы</span>
+        </div>
+        <div class="category-item" data-category="salads">
+            <img src="/фото/фото категорий/салат кат.png" alt="Салаты" class="category-icon">
+            <span class="category-name">Салаты</span>
+        </div>
+        <div class="category-item" data-category="combo">
+            <img src="/фото/фото категорий/комбо кат.png" alt="Комбо" class="category-icon">
+            <span class="category-name">Комбо</span>
+        </div>
+        <div class="category-item" data-category="pizza">
+            <img src="/фото/фото категорий/пицца кат.png" alt="Пицца" class="category-icon">
+            <span class="category-name">Пицца</span>
+        </div>
+        <div class="category-item" data-category="drinks">
+            <img src="/фото/фото категорий/напитки кат.png" alt="Напитки" class="category-icon">
+            <span class="category-name">Напитки</span>
+        </div>
+    </div>
 
         <div class="content-container">
             <div class="content" id="all-content">
                 <div class="category-sections">
                     <!-- Здесь будут категории и товары -->
-                </div>
-            </div>
-        </div>
-
-        <div class="product-modal">
-            <div class="product-modal-content">
-                <span class="product-modal-close">×</span>
-                <div class="product-modal-image">
-                    <img src="" alt="Товар">
-                </div>
-                <div class="product-modal-details">
-                    <div class="product-modal-header">
-                        <div class="product-modal-name"></div>
-                        <div class="product-modal-weight"></div>
-                    </div>
-                    <div class="product-modal-quantity">
-                        <div class="quantity-group">
-                            <button class="quantity-minus">-</button>
-                            <input type="number" class="quantity-input" value="1" min="1">
-                            <button class="quantity-plus">+</button>
-                        </div>
-                        <div class="quantity-add">
-                            <button class="product-modal-add">Добавить</button>
-                        </div>
-                    </div>
-                    <div class="product-modal-info">
-                        <div class="product-modal-description"></div>
-                        <div class="product-modal-composition"></div>
-                        <div class="product-modal-nutrition">
-                            <div class="nutrition-title">На 100 г</div>
-                            <div class="nutrition-table">
-                                <!-- Ячейки будут добавляться через JS -->
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -198,6 +164,41 @@
         </div>
     </div>
 
+    <div class="product-modal">
+        <div class="product-modal-content">
+            <span class="product-modal-close">×</span>
+            <div class="product-modal-image">
+                <img src="" alt="Товар">
+            </div>
+            <div class="product-modal-details">
+                <div class="product-modal-header">
+                    <div class="product-modal-name"></div>
+                    <div class="product-modal-weight"></div>
+                </div>
+                <div class="product-modal-quantity">
+                    <div class="quantity-group">
+                        <button class="quantity-minus">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="quantity-plus">+</button>
+                    </div>
+                    <div class="quantity-add">
+                        <button class="product-modal-add">Добавить</button>
+                    </div>
+                </div>
+                <div class="product-modal-info">
+                    <div class="product-modal-description"></div>
+                    <div class="product-modal-composition"></div>
+                    <div class="product-modal-nutrition">
+                        <div class="nutrition-title">На 100 г</div>
+                        <div class="nutrition-table">
+                            <!-- Ячейки будут добавляться через JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <button class="mobile-cart-button">Перейти в корзину (<span id="mobile-total-price">0.00</span> ₽)</button>
 
     <div class="mobile-cart-modal">
@@ -216,7 +217,7 @@
             <a href="index.html" class="footer-logo-link">
                 <img src="/фото/sJB4OhCXlhc.png" alt="Логотип" class="footer-logo">
             </a>
-            <a href="mailto:shafranovcyril@yandex.ru" class="footer-icon-link">
+            <a href="/cdn-cgi/l/email-protection#a3d0cbc2c5d1c2cdccd5c0dad1cacfe3dac2cdc7c6db8dd1d6" class="footer-icon-link">
                 <img src="/фото/mail_icon.png" alt="Email" class="footer-icon1">
             </a>
             <a href="https://vk.com/shashlikmashlik57" target="_blank" class="footer-icon-link">
@@ -229,8 +230,9 @@
         </div>
     </footer>
 
-
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/cloudflare-challenge.js"></script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92eb2a5199438750',t:'MTc0NDM4MTY1Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>

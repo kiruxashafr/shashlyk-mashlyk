@@ -127,14 +127,12 @@ setInterval(() => {
 
 // API для товаров (главная страница, только inStock = 1)
 app.get('/api/products', (req, res) => {
-    console.log('Запрос /api/products');
     const stmt = db.prepare('SELECT * FROM products');
     stmt.all((err, rows) => {
         if (err) {
             console.error('Ошибка выполнения запроса к products:', err);
             res.status(500).json({ error: 'Ошибка сервера' });
         } else {
-            console.log('Найдено товаров:', rows.length, 'Данные:', rows);
             res.json(rows);
         }
         stmt.finalize();
