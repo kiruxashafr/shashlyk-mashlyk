@@ -11,12 +11,15 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@npmcli/fs": "^4.0.0",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "express-basic-auth": "^1.2.1",
+    "glob": "^11.0.1",
     "https": "^1.0.0",
     "multer": "^1.4.5-lts.1",
+    "rimraf": "^6.0.1",
     "sqlite3": "^5.1.7"
   }
 }
