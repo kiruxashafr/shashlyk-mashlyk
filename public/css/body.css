@@ -35,10 +35,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    width: 100%; /* Полная ширина */
-    max-width: none; /* Убираем ограничение ширины */
+    width: 100%;
+    max-width: none;
     margin: 0;
-    padding: 0 10px; /* Небольшие отступы по бокам */
+    padding: 0 10px;
     flex-grow: 1;
     position: relative;
     z-index: 1;
@@ -375,14 +375,34 @@ input:not(:checked) + .slider .label:last-child {
     gap: 10px;
 }
 
+/* Мобильный переключатель */
+.mobile-toggle-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 15px;
+    background-color: #f0f1f3;
+    z-index: 90;
+    box-sizing: border-box;
+    margin-top: 110px;
+    position: static;
+}
+
+.mobile-toggle-container .toggle {
+    width: 100%;
+    max-width: 400px;
+    height: 50px;
+    margin-top: 10px;
+}
+
 /* Адаптивность */
 @media (max-width: 1200px) {
     .main-container {
         flex-direction: column;
         align-items: center;
-        padding: 0 10px; /* Небольшие отступы */
-        margin-top: 160px; /* Учитываем top-bar (60px) + mobile-categories (50px) + mobile-toggle (50px) */
-        width: 100%; /* Полная ширина */
+        padding: 0 10px;
+        margin-top: 170px; /* top-bar (60px) + mobile-categories (50px) + mobile-toggle (60px) */
+        width: 100%;
     }
     .category-container, .content-container, .right-panel {
         width: 100%;
@@ -392,23 +412,23 @@ input:not(:checked) + .slider .label:last-child {
     .content-container {
         overflow-y: visible;
         height: auto;
-        margin-top: 0; /* Без лишних отступов */
+        margin-top: 0;
     }
     .toggle-container { display: none; }
     .mobile-toggle-container {
-        width: 100%;
-        position: fixed;
-        top: 110px; /* Под top-bar (60px) + mobile-categories (50px) */
-        z-index: 100;
-        margin: 0;
-        padding: 10px 0;
-        background-color: #f0f1f3;
         display: flex;
+        width: 100%;
+        position: static;
+        z-index: 90;
+        margin-top: 110px; /* top-bar (60px) + mobile-categories (50px) */
+        padding: 10px 15px;
+        background-color: #f0f1f3;
         justify-content: center;
     }
     .mobile-toggle-container .toggle {
         max-width: 400px;
         height: 50px;
+        margin-top: 10px;
     }
     .mobile-categories {
         display: flex;
@@ -420,13 +440,13 @@ input:not(:checked) + .slider .label:last-child {
         background-color: #ffffff;
         border-radius: 0;
         box-shadow: none;
-        z-index: 99;
+        z-index: 99; /* Ниже top-bar (z-index: 100 или выше) */
         width: 100%;
         white-space: nowrap;
         position: fixed;
-        top: 60px; /* Точно под top-bar высотой 60px */
+        top: 70px; /* Чётко под top-bar высотой 60px */
         left: 0;
-        transition: top 0.5s ease;
+        transition: top 0.3s ease; /* Плавный переход */
     }
     .mobile-categories.fixed {
         top: 0; /* Когда top-bar скрыт */
@@ -472,7 +492,8 @@ input:not(:checked) + .slider .label:last-child {
     .top-bar {
         position: fixed;
         top: 0;
-        transition: transform 0.5s ease;
+        transition: transform 0.3s ease;
+        z-index: 100; /* Выше mobile-categories */
     }
     .top-bar.hidden {
         transform: translateY(-100%);
@@ -499,7 +520,9 @@ input:not(:checked) + .slider .label:last-child {
     .right-panel { display: none; }
     .mobile-toggle-container { 
         display: flex;
-        top: 110px;
+        position: static;
+        padding: 10px 15px;
+        margin-top: 115px; /* top-bar (65px) + mobile-categories (50px) */
     }
     .mobile-cart-button { 
         display: block; 
@@ -518,7 +541,9 @@ input:not(:checked) + .slider .label:last-child {
         display: none;
     }
     .mobile-toggle-container {
-        top: 110px;
+        position: static;
+        padding: 10px 15px;
+        margin-top: 110px;
     }
     .mobile-cart-button { 
         display: block;
@@ -539,14 +564,16 @@ input:not(:checked) + .slider .label:last-child {
 
 @media (max-width: 576px) {
     .main-container {
-        margin-top: 165px; /* Учитываем top-bar (65px) + mobile-categories (50px) + toggle (50px) */
+        margin-top: 175px; /* top-bar (65px) + mobile-categories (50px) + mobile-toggle (60px) */
         padding: 0 10px;
     }
     .mobile-toggle-container {
-        top: 115px; /* Под top-bar (65px) + mobile-categories (50px) */
+        position: static;
+        padding: 8px 10px;
+        margin-top: 115px; /* top-bar (65px) + mobile-categories (50px) */
     }
     .mobile-categories {
-        top: 65px; /* Точно под top-bar высотой 65px */
+        top: 65px; /* Чётко под top-bar высотой 65px */
     }
     .mobile-categories.fixed {
         top: 0;
@@ -558,18 +585,20 @@ input:not(:checked) + .slider .label:last-child {
 
 @media (max-width: 480px) {
     .main-container { 
-        padding: 0 5px; /* Уменьшаем отступы для маленьких экранов */
-        margin-top: 170px; /* Учитываем top-bar (70px) + mobile-categories (50px) + toggle (50px) */
+        padding: 0 5px;
+        margin-top: 180px; /* top-bar (70px) + mobile-categories (50px) + mobile-toggle (60px) */
     }
     .content-container { 
         padding: 10px; 
         margin-top: 0 !important;
     }
     .mobile-toggle-container { 
-        top: 120px; /* Под top-bar (70px) + mobile-categories (50px) */
+        position: static;
+        padding: 8px 10px;
+        margin-top: 120px; /* top-bar (70px) + mobile-categories (50px) */
     }
     .mobile-categories {
-        top: 70px; /* Точно под top-bar высотой 70px */
+        top: 70px; /* Чётко под top-bar высотой 70px */
     }
     .mobile-categories.fixed {
         top: 0;
@@ -584,23 +613,26 @@ input:not(:checked) + .slider .label:last-child {
 @media (max-width: 368px) {
     .main-container { 
         padding: 0 5px;
-        margin-top: 155px; /* Учитываем top-bar (~65px) + mobile-categories (50px) + toggle (40px) */
+        margin-top: 165px; /* top-bar (65px) + mobile-categories (50px) + mobile-toggle (50px) */
     }
     .mobile-toggle-container { 
-        top: 115px; /* Под top-bar (~65px) + mobile-categories (50px) */
+        position: static;
+        padding: 5px 8px;
+        margin-top: 115px; /* top-bar (65px) + mobile-categories (50px) */
+    }
+    .mobile-toggle-container .toggle { 
+        max-width: 250px; 
+        height: 40px; 
+        margin-top: 8px;
     }
     .mobile-categories {
-        top: 65px; /* Точно под top-bar высотой ~65px */
+        top: 65px; /* Чётко под top-bar высотой 65px */
     }
     .mobile-categories.fixed {
         top: 0;
     }
     .content-container {
         margin-top: 0 !important;
-    }
-    .mobile-toggle-container .toggle { 
-        max-width: 250px; 
-        height: 40px; 
     }
     .label { font-size: 14px; line-height: 40px; }
 }
@@ -615,8 +647,8 @@ input:not(:checked) + .slider .label:last-child {
     .main-container {
         display: flex;
         justify-content: space-between;
-        width: 100%; /* Полная ширина */
-        padding: 0 10px; /* Небольшие отступы */
+        width: 100%;
+        padding: 0 10px;
         padding-top: 92px;
         height: calc(100vh - 65px);
         position: fixed;
@@ -705,24 +737,12 @@ input:not(:checked) + .slider .label:last-child {
     .address { display: block; }
 }
 
-.mobile-toggle-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.mobile-toggle-container .toggle {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-}
-
 body.menu-open .main-container {
     margin-top: 120px;
 }
 
 @media (max-width: 780px) {
     body.menu-open .main-container {
-        margin-top: 160px; /* Учитываем высоту фиксированных элементов */
+        margin-top: 170px;
     }
 }
