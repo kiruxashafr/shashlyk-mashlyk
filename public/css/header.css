@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 400; /* Regular */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700; /* Bold */
+    font-style: normal;
+}
+
 /* Верхняя панель */
 .top-bar {
     background-color: #ffffff;
@@ -50,9 +64,9 @@
 }
 
 .cafe-title {
-    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
     font-size: 28px;
-    font-weight: normal;
     color: #000000;
     letter-spacing: 1px;
     white-space: nowrap;
@@ -60,7 +74,7 @@
     line-height: 1;
     position: relative;
     transform: translateY(-50%);
-    bottom: 7px;
+    bottom: 14px;
     transition: color 0.3s ease;
 }
 
@@ -278,18 +292,25 @@
     .nav-links {
         display: flex;
         gap: 5px;
+        position: relative;
+        top: -5px;
     }
     .top-bar .nav-links .button {
         padding: 8px 10px;
         font-size: 23px;
+        font-weight: bold;
+
     }
     .button-icon {
-        height: 25px;
-        width: 25px;
+        height: 30px;
+        width: 30px;
+        top: 8px !important;
     }
     .contact-info {
         flex-direction: column;
         text-align: left;
+        position: relative;
+        top: 0px;
     }
     #menu-btn-container {
         display: none;
@@ -297,6 +318,8 @@
     .phone {
         margin-left: 70px;
         font-size: 20px;
+        font-weight: bold;
+
     }
     .address {
         font-size: 20px;
@@ -321,14 +344,40 @@
     }
     .top-bar .nav-links .button {
         padding: 6px 8px;
-        font-size: 18px;
+        font-size: 115%;
+        font-weight: bold;
+
+    }
+
+    .nav-links {
+        position: relative;
+        top: -6px;
+        left: -27px;
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0px;
     }
     .button-icon {
-        height: 20px;
-        width: 20px;
+        height: 26px;
+        width: 26px;
+        top: 7px !important;
+    }
+    .contact-info{
+        width: 19%;
     }
     .phone {
-        margin-left: 40px;
+        font-size: 17px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 0px;
+        font-weight: bold;
+
+    }
+
+    .phone-icon{
+        margin-right: 0px;
     }
     .address {
         display: block; /* Показываем полный адрес */
@@ -349,15 +398,28 @@
         height: 40px;
     }
     .cafe-title {
-        font-size: 19px;
-        bottom: 8px;
+        font-size: 24px;
+        bottom: 11px;
     }
     .nav-links {
-        gap: 3px;
+        position: relative;
+        top: -6px;
+        left: -14px;
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0px;
+    }
+    .button-icon {
+        height: 26px;
+        width: 26px;
+        top: 5px !important;
     }
     .top-bar .nav-links .button {
-        font-size: 90%;
+        font-size: 17px;
         padding: 5px 6px;
+        font-weight: bold;
     }
     .button-icon {
         height: 23px;
@@ -365,13 +427,17 @@
     }
     .phone {
         font-size: 15px;
-        margin-left: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 0px;
+        font-weight: bold;
+
     }
     .phone-icon {
         height: 16px;
     }
     .address {
-        font-size: 15px;
+        font-size: 80%;
         max-width: 120px;
         display: block;
     }
@@ -379,8 +445,12 @@
         display: none;
     }
     .contact-info {
-        margin-right: 50px;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 20%;
+        position: relative;
+        top: -2px;
     }
     #menu-label {
         margin-top: 0px !important;
@@ -392,8 +462,11 @@
         height: 60px;
     }
     .phone {
-        font-size: 15px;
-        margin-left: 45px;
+        font-size: 22px;
+    }
+    .phone-icon{
+        height: 25px;
+        width: 25px;
     }
     .address {
         font-size: 15px;
@@ -454,8 +527,8 @@
         margin-left: 0px;
     }
     .contact-info {
-        margin-right: 55px;
         flex-direction: column;
+        width: 35%;
     }
 }
 
@@ -477,7 +550,7 @@
     }
     .cafe-title {
         font-size: 22px !important;
-        bottom: 6px;
+        bottom: 8px;
     }
     .contact-info {
         margin-right: 35px;
@@ -485,12 +558,15 @@
         gap: 15px;
     }
     .phone {
-        font-size: 15px;
+        font-size: 17px;
         margin-left: 0px;
     }
     .phone-icon {
-        height: 14px;
+        height: 18px;
+        width: 18px;
         margin-right: 3px;
+        bottom: 1px;
+        position: relative;
     }
     .address {
         font-size: 15px;
@@ -561,11 +637,11 @@
         margin-top: 5px;
     }
     .cafe-title {
-        font-size: 19px !important;
-        bottom: 8px;
+        font-size: 21px !important;
+        bottom: 11px;
     }
     .phone {
-        font-size: 13px;
+        font-size: 17px;
     }
     .mobaddress {
         font-size: 14px;
@@ -573,9 +649,12 @@
     }
     .contact-info {
         margin-right: 0px;
+        width: 50%;
     }
     .phone-icon {
-        height: 12px;
+        height: 16px;
+        width: 16px;
+        top: -2pxpx;
     }
     .address {
         font-size: 13px;
@@ -646,13 +725,14 @@
     .logo-container {
         min-width: 80px;
         max-height: 30px;
+        padding-top: 10px;
     }
     .logo {
-        height: 30px;
+        height: 34px;
     }
     .cafe-title {
         font-size: 14px;
-        bottom: 5px;
+        bottom: 9px;
     }
     .contact-info {
         flex-direction: row;
@@ -661,11 +741,14 @@
         margin-bottom: 2px;
     }
     .phone {
-        font-size: 13px;
+        font-size: 16px;
         margin-bottom: 0;
     }
     .phone-icon {
-        height: 8px;
+        height: 15px;
+        width: 15px;
+        position: relative;
+        top: -1px;
         margin-right: 3px;
     }
     .mobaddress {
@@ -732,6 +815,26 @@
     }
     .nav-links.active {
         top: 65px !important;
+    }
+}
+
+@media (max-width: 328px) {
+    .cafe-title{
+        font-size: 19px !important;
+        font-weight: bold;
+    }
+    .phone{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 307px) {
+    #menu-btn-container {
+        top: 15px;
+}
+    .contact-info{
+        top: -5px;
+        width: 70%;
     }
 }
 

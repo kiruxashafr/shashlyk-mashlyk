@@ -75,19 +75,37 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Инициализация Яндекс.Карты
-    ymaps.ready(init);
-    function init() {
-        const myMap = new ymaps.Map("map", {
-            center: [52.957096331794304, 36.05950076438327], // Координаты: ул. Карачевская, 58, Орел
-            zoom: 18
-        });
+// Инициализация Яндекс.Карты
+ymaps.ready(init);
+function init() {
+    const myMap = new ymaps.Map("map", {
+        center: [56.344, 37.520], // Координаты: ул. Подчерково, 67, Дмитров
+        zoom: 10 // Уменьшенный зум, чтобы радиус был виден
+    });
 
-        const myPlacemark = new ymaps.Placemark([52.957096331794304, 36.05950076438327], {
-            hintContent: 'Шашлык-Машлык',
-            balloonContent: 'г. Орел, ул. Карачевская, д. 58'
-        });
+    // Метка для кафе
+    const myPlacemark = new ymaps.Placemark([56.344, 37.520], {
+        hintContent: 'Шашлык-Машлык',
+        balloonContent: 'г. Дмитров, ул. Подчерково, д. 67'
+    });
 
-        myMap.geoObjects.add(myPlacemark);
-    }
+    // Круг для радиуса доставки
+    const deliveryCircle = new ymaps.Circle([
+        [56.344, 37.520], // Центр круга
+        5000 // Радиус 10 км
+    ], {
+        hintContent: 'Зона доставки',
+        balloonContent: 'Доставка по Дмитрову и Дмитровскому району'
+    }, {
+        fillColor: '#FF000033', // Красная заливка с прозрачностью
+        strokeColor: '#FF0000', // Красная обводка
+        strokeOpacity: 0.8,
+        strokeWidth: 2,
+        fillOpacity: 0.2
+    });
+
+    // Добавляем метку и круг на карту
+    myMap.geoObjects.add(myPlacemark);
+    myMap.geoObjects.add(deliveryCircle);
+}
 });

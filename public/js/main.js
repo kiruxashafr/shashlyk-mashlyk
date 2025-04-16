@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
     orderSuccessModal.innerHTML = `
         <div style="background-color: white; padding: 20px; border-radius: 10px; text-align: center; max-width: 500px;">
             <h2>Заказ успешно оформлен</h2>
-            <p>Ваш заказ передан оператору. Вам позвонят для уточнения заказа в течение 5 минут. Если этого не произошло, повторно произведите заказ или позвоните по номеру <strong>+7(958)655-94-00</strong> для заказа по телефону.</p>
+            <p>Ваш заказ передан оператору. Вам позвонят для уточнения заказа в течение 5 минут. Если этого не произошло, повторно произведите заказ или позвоните по номеру <strong>+7 (977) 498-81-19</strong> для заказа по телефону.</p>
             <button id="close-success-modal" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Перейти на главную</button>
         </div>
     `;
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (closeSuccessModal) {
         closeSuccessModal.addEventListener('click', () => {
             orderSuccessModal.style.display = 'none';
-            window.location.href = 'index.html';
+            window.location.href = '/';
         });
     }
 
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         orderSuccessModal.addEventListener('click', (e) => {
             if (e.target === orderSuccessModal) {
                 orderSuccessModal.style.display = 'none';
-                window.location.href = 'index.html';
+                window.location.href = '/';
             }
         });
     }
@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Обработка кнопок "Перейти к оформлению"
     checkoutButtons.forEach(button => {
         button.addEventListener('click', function () {
-            window.location.href = 'cart.html';
+            window.location.href = '/cart';
         });
     });
 
@@ -245,70 +245,70 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Функция обновления корзины (десктоп)
-    function updateCart() {
-        if (cartItemsContainer) {
-            cartItemsContainer.innerHTML = '';
-            totalPrice = 0;
+ // Функция обновления корзины (десктоп)
+function updateCart() {
+    if (cartItemsContainer) {
+        cartItemsContainer.innerHTML = '';
+        totalPrice = 0;
 
-            if (items.length === 0) {
-                cartItemsContainer.innerHTML = '<div>Корзина пуста</div>';
-            } else {
-                items.forEach(item => {
-                    const cartItem = document.createElement('div');
-                    cartItem.classList.add('cart-item');
-                    cartItem.innerHTML = `
-                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                        <div class="cart-item-info">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-quantity">
-                                <button class="quantity-minus">-</button>
-                                <input type="number" class="quantity-input" value="${item.quantity}" min="1">
-                                <button class="quantity-plus">+</button>
-                            </div>
-                            <div class="cart-item-price">${Math.round(item.price * item.quantity)} ₽</div>
+        if (items.length === 0) {
+            cartItemsContainer.innerHTML = '<div class="empty-cart">Корзина пуста</div>';
+        } else {
+            items.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-minus">-</button>
+                            <input type="number" class="quantity-input" value="${item.quantity}" min="1">
+                            <button class="quantity-plus">+</button>
                         </div>
-                        <button class="remove-item-btn">
-                            <img src="фото/trashcan_106521.png" alt="Удалить" class="remove-icon">
-                        </button>
-                    `;
-                    cartItemsContainer.appendChild(cartItem);
-                    totalPrice += item.price * item.quantity;
-                });
-            }
-
-            if (totalPriceElement) {
-                const deliveryType = localStorage.getItem('deliveryType');
-                let totalText = `${Math.round(totalPrice)} ₽`;
-
-                if (deliveryType === 'delivery') {
-                    if (totalPrice < 1500) {
-                        totalText += ' (бесплатная доставка от 1500, оператор уточнит стоимость доставки при подтверждении заказа)';
-                    } else {
-                        totalText += ' (доставка бесплатная)';
-                    }
-                }
-
-                totalPriceElement.textContent = totalText;
-            }
-
-            checkoutButtons.forEach(button => {
-                button.textContent = `Перейти к оформлению (${Math.round(totalPrice)} ₽)`;
+                        <div class="cart-item-price">${Math.round(item.price * item.quantity)} ₽</div>
+                    </div>
+                    <button class="remove-item-btn">
+                        <img src="/фото/trashcan_106521.png" alt="Удалить" class="remove-icon">
+                    </button>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+                totalPrice += item.price * item.quantity;
             });
+        }
 
-            if (mobileTotalPrice) {
-                mobileTotalPrice.textContent = Math.round(totalPrice);
+        if (totalPriceElement) {
+            const deliveryType = localStorage.getItem('deliveryType');
+            let totalText = `${Math.round(totalPrice)} ₽`;
+
+            if (deliveryType === 'delivery') {
+                if (totalPrice < 1500) {
+                    totalText += ' (бесплатная доставка от 1500, оператор уточнит стоимость доставки при подтверждении заказа)';
+                } else {
+                    totalText += ' (доставка бесплатная)';
+                }
             }
 
-            if (mobileCartButton) {
-                if (window.innerWidth <= 1200) {
-                    mobileCartButton.style.display = 'block';
-                } else {
-                    mobileCartButton.style.display = 'none';
-                }
+            totalPriceElement.textContent = totalText;
+        }
+
+        checkoutButtons.forEach(button => {
+            button.textContent = `Перейти к оформлению (${Math.round(totalPrice)} ₽)`;
+        });
+
+        if (mobileTotalPrice) {
+            mobileTotalPrice.textContent = Math.round(totalPrice);
+        }
+
+        if (mobileCartButton) {
+            if (window.innerWidth <= 1200) {
+                mobileCartButton.style.display = 'block';
+            } else {
+                mobileCartButton.style.display = 'none';
             }
         }
     }
-
+}
     // Функция обновления мобильной корзины
     function updateMobileCart() {
         if (mobileCartItems) {
@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             <div class="cart-item-price">${Math.round(item.price * item.quantity)} ₽</div>
                         </div>
                         <button class="remove-item-btn">
-                            <img src="фото/trashcan_106521.png" alt="Удалить" class="remove-icon">
+                            <img src="/фото/trashcan_106521.png" alt="Удалить" class="remove-icon">
                         </button>
                     `;
                     mobileCartItems.appendChild(cartItem);
@@ -366,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Функция для обновления видимости полей доставки
     function updateDeliveryFields() {
-        if (window.location.pathname.includes('cart.html')) {
+        if (window.location.pathname.includes('cart')) {
             const deliveryType = localStorage.getItem('deliveryType');
             const isDelivery = deliveryType === 'delivery';
 
@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Обработка ввода в форме заказа
-    if (orderForm && window.location.pathname.includes('cart.html')) {
+    if (orderForm && window.location.pathname.includes('cart')) {
         orderForm.addEventListener('input', function (e) {
             const formData = new FormData(orderForm);
 
@@ -791,45 +791,74 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCart();
     updateMobileCart();
 
-    // Обработка кликов по категориям с анимацией линии
     document.querySelectorAll('.category-item').forEach(category => {
         category.addEventListener('click', function () {
             const categoryId = this.getAttribute('data-category');
             const categorySection = document.getElementById(`category-${categoryId}`);
-
-            // Существующая логика прокрутки
+    
             if (categorySection) {
+                let targetScrollTop;
                 if (window.innerWidth >= 1201) {
                     const contentContainer = document.querySelector('.content-container');
                     const rect = categorySection.getBoundingClientRect();
                     const containerRect = contentContainer.getBoundingClientRect();
-                    const offsetTop = contentContainer.scrollTop + rect.top - containerRect.top - 100;
-                    contentContainer.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                    targetScrollTop = contentContainer.scrollTop + rect.top - containerRect.top - 100;
+                    smoothScroll(contentContainer, targetScrollTop, 800); // 800ms для десктопа
                 } else {
-                    const offsetTop = categorySection.getBoundingClientRect().top + window.pageYOffset - 100;
-                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                    targetScrollTop = categorySection.getBoundingClientRect().top + window.pageYOffset - 100;
+                    smoothScroll(window, targetScrollTop, 1000); // 1000ms для мобильных
                 }
-            }
-
-            // Удаляем активный класс и линию у всех категорий
-            document.querySelectorAll('.category-item').forEach(item => {
-                item.classList.remove('active');
-                const underline = item.querySelector('.category-underline');
+    
+                // Удаляем активный класс и линию у всех категорий
+                document.querySelectorAll('.category-item').forEach(item => {
+                    item.classList.remove('active');
+                    const underline = item.querySelector('.category-underline');
+                    if (underline) {
+                        underline.style.transform = 'scaleX(0)';
+                    }
+                });
+    
+                // Добавляем активный класс и анимируем линию для выбранной категории
+                this.classList.add('active');
+                const underline = this.querySelector('.category-underline');
                 if (underline) {
-                    underline.style.transform = 'scaleX(0)';
+                    underline.style.transform = 'scaleX(1)';
                 }
-            });
-
-            // Добавляем активный класс и анимируем линию для выбранной категории
-            this.classList.add('active');
-            const underline = this.querySelector('.category-underline');
-            if (underline) {
-                underline.style.transform = 'scaleX(1)';
             }
         });
     });
+    
+    // Функция для кастомной плавной прокрутки
+    function smoothScroll(element, to, duration) {
+        const start = element === window ? window.pageYOffset : element.scrollTop;
+        const change = to - start;
+        const startTime = performance.now();
+    
+        function animateScroll(currentTime) {
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1);
+            const ease = easeInOutQuad(progress); // Функция смягчения
+    
+            if (element === window) {
+                window.scrollTo(0, start + change * ease);
+            } else {
+                element.scrollTop = start + change * ease;
+            }
+    
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animateScroll);
+            }
+        }
+    
+        // Функция смягчения (ease-in-out)
+        function easeInOutQuad(t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        }
+    
+        requestAnimationFrame(animateScroll);
+    }
 
-    if (orderButton && orderForm && window.location.pathname.includes('cart.html')) {
+    if (orderButton && orderForm && window.location.pathname.includes('cart')) {
         orderButton.addEventListener('click', function () {
             const formData = new FormData(orderForm);
             const deliveryType = localStorage.getItem('deliveryType');

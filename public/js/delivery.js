@@ -44,31 +44,49 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Modal elements not found');
     }
 
-    // Яндекс.Карта
-    if (typeof ymaps !== 'undefined') {
-        console.log('Yandex Maps script loaded');
-        ymaps.ready(() => {
-            console.log('Yandex Maps ready');
-            const mapContainer = document.getElementById('map');
-            if (mapContainer) {
-                console.log('Map container found');
-                const myMap = new ymaps.Map("map", {
-                    center: [52.957096331794304, 36.05950076438327], // Координаты: ул. Карачевская, 58, Орел
-                    zoom: 18
-                });
-        
-                const myPlacemark = new ymaps.Placemark([52.957096331794304, 36.05950076438327], {
-                    hintContent: 'Шашлык-Машлык',
-                    balloonContent: 'г. Орел, ул. Карачевская, д. 58'
-                });
-        
-                myMap.geoObjects.add(myPlacemark);
-                console.log('Map initialized');
-            } else {
-                console.error('Map container #map not found');
-            }
-        });
-    } else {
-        console.error('Yandex Maps script not loaded');
-    }
+// Яндекс.Карта
+if (typeof ymaps !== 'undefined') {
+    console.log('Yandex Maps script loaded');
+    ymaps.ready(() => {
+        console.log('Yandex Maps ready');
+        const mapContainer = document.getElementById('map');
+        if (mapContainer) {
+            console.log('Map container found');
+            const myMap = new ymaps.Map("map", {
+                center: [56.344, 37.520], // Координаты: ул. Подчерково, 67, Дмитров
+                zoom: 10 // Уменьшенный зум для видимости радиуса
+            });
+
+            // Метка для кафе
+            const myPlacemark = new ymaps.Placemark([56.344, 37.520], {
+                hintContent: 'Шашлык-Машлык',
+                balloonContent: 'г. Дмитров, ул. Подчерково, д. 67'
+            });
+
+            // Круг для радиуса доставки
+            const deliveryCircle = new ymaps.Circle([
+                [56.344, 37.520], // Центр круга
+                5000 // Радиус 10 км
+            ], {
+                hintContent: 'Зона доставки',
+                balloonContent: 'Доставка по Дмитрову и Дмитровскому району'
+            }, {
+                fillColor: '#FF000033', // Красная заливка с прозрачностью
+                strokeColor: '#FF0000', // Красная обводка
+                strokeOpacity: 0.8,
+                strokeWidth: 2,
+                fillOpacity: 0.2
+            });
+
+            // Добавляем метку и круг на карту
+            myMap.geoObjects.add(myPlacemark);
+            myMap.geoObjects.add(deliveryCircle);
+            console.log('Map initialized with delivery radius');
+        } else {
+            console.error('Map container #map not found');
+        }
+    });
+} else {
+    console.error('Yandex Maps script not loaded');
+}
 });

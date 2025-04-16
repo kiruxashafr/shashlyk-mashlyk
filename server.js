@@ -7,6 +7,7 @@ const fs = require('fs');
 const multer = require('multer');
 const basicAuth = require('express-basic-auth');
 const https = require('https');
+const http = require('http');
 
 const app = express();
 
@@ -40,6 +41,11 @@ app.use('/operator', basicAuth({
     challenge: true,
     unauthorizedResponse: 'Доступ запрещён. Введите правильный логин и пароль.'
 }));
+
+// Перенаправление /index.html на /
+app.get('/index.html', (req, res) => {
+    res.redirect(301, '/');
+});
 
 // Маршруты для страниц
 app.get('/', (req, res) => {
@@ -282,6 +288,13 @@ app.get('/api/categories', (req, res) => {
         { id: 'pizza', name: 'Пицца', icon: '/фото/фото категорий/пицца кат.png' },
         { id: 'drinks', name: 'Напитки', icon: '/фото/фото категорий/напитки кат.png' }
     ]);
+});
+
+http.createServer((req, res) => {
+    res.writeHead(301, { Location: `https://${req.headers.host}${req.url}` });
+    res.end();
+}).listen(80, '0.0.0.0', () => {
+    console.log('HTTP-сервер запущен на порту 80 для перенаправления на HTTPS');
 });
 
 // HTTPS сервер
